@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>汪小窝宠物洗护 - 专业宠物美容护理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;color:#2c2c2c;background:#faf8f6;line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+ul{list-style:none}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,248,246,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.05);transition:all .3s}
+header .container{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:900;color:#E8845C}
+.logo-icon{width:38px;height:38px;background:#E8845C;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px}
+.nav-links{display:flex;gap:32px;font-size:15px;font-weight:500}
+.nav-links a{position:relative;color:#555;transition:color .3s}
+.nav-links a::after{content:"";position:absolute;bottom:-4px;left:0;width:0;height:2px;background:#E8845C;transition:width .3s}
+.nav-links a:hover{color:#E8845C}
+.nav-links a:hover::after{width:100%}
+.nav-toggle{display:none;background:none;border:none;font-size:28px;cursor:pointer;color:#555;padding:4px}
+
+.hero{padding:140px 0 80px;background:linear-gradient(135deg,#faf6f0,#f5ede4 50%,#efe3d8)}
+.hero .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-content h1{font-size:48px;font-weight:900;line-height:1.2;color:#1a1a1a;margin-bottom:20px}
+.hero-content h1 span{color:#E8845C}
+.hero-content p{font-size:17px;color:#666;margin-bottom:32px;max-width:480px;line-height:1.8}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 36px;border-radius:50px;font-size:15px;font-weight:600;cursor:pointer;border:none;transition:all .3s;font-family:inherit}
+.btn-primary{background:#E8845C;color:#fff;box-shadow:0 4px 16px rgba(232,132,92,.35)}
+.btn-primary:hover{background:#d4734d;transform:translateY(-2px);box-shadow:0 6px 24px rgba(232,132,92,.45)}
+.btn-outline{background:transparent;color:#E8845C;border:2px solid #E8845C}
+.btn-outline:hover{background:#E8845C;color:#fff;transform:translateY(-2px)}
+.hero-image{display:flex;justify-content:center;align-items:center}
+.hero-img-placeholder{width:100%;max-width:480px;aspect-ratio:1;border-radius:30px;background:linear-gradient(145deg,#f0d5c4,#e8bea8);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-size:100px;box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.hero-img-placeholder .sub{font-size:18px;font-weight:500;margin-top:8px;opacity:.85}
+.hero-stats{display:flex;gap:32px;margin-top:40px;padding-top:32px;border-top:1px solid rgba(0,0,0,.06)}
+.hero-stat span{font-size:28px;font-weight:900;color:#E8845C}
+.hero-stat p{font-size:13px;color:#888;margin:0}
+
+.section{padding:100px 0}
+.section-label{font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#E8845C;margin-bottom:8px}
+.section-title{font-size:36px;font-weight:800;color:#1a1a1a;margin-bottom:12px}
+.section-desc{font-size:16px;color:#777;max-width:560px;line-height:1.8}
+.section-header{text-align:center;margin-bottom:60px}
+.section-header .section-desc{margin:0 auto}
+
+#services{background:#fff}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.service-card{background:#faf8f6;border-radius:20px;padding:40px 32px;transition:all .4s;border:1px solid transparent}
+.service-card:hover{transform:translateY(-6px);border-color:rgba(232,132,92,.2);box-shadow:0 12px 40px rgba(232,132,92,.1)}
+.service-icon{font-size:42px;margin-bottom:16px}
+.service-card h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.service-card p{font-size:14px;color:#888;line-height:1.7;margin-bottom:16px}
+.service-price{font-size:22px;font-weight:800;color:#E8845C}
+.service-price small{font-size:13px;font-weight:400;color:#aaa}
+
+#about{background:#faf8f6}
+.about-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-image{border-radius:24px;overflow:hidden;background:linear-gradient(145deg,#f0d5c4,#e8bea8);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:80px;color:#fff;box-shadow:0 16px 48px rgba(0,0,0,.06)}
+.about-text h2{font-size:36px;font-weight:800;margin-bottom:20px}
+.about-text p{font-size:15px;color:#666;line-height:1.9;margin-bottom:16px}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.about-feature{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500}
+.about-feature .check{width:24px;height:24px;background:#E8845C;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:13px;flex-shrink:0}
+
+#gallery{background:#fff}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.gallery-item{aspect-ratio:1;border-radius:16px;overflow:hidden;position:relative;background:#f0e8e0;display:flex;align-items:center;justify-content:center;font-size:50px;color:rgba(255,255,255,.9);cursor:pointer;transition:transform .4s}
+.gallery-item:hover{transform:scale(1.03)}
+.gallery-item.tall{grid-row:span 2;aspect-ratio:auto}
+.gallery-item .label{position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(0,0,0,.4));font-size:14px;color:#fff;font-weight:500}
+
+#testimonials{background:#faf8f6}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.testimonial-card{background:#fff;border-radius:20px;padding:36px 32px;box-shadow:0 4px 20px rgba(0,0,0,.04);transition:transform .3s}
+.testimonial-card:hover{transform:translateY(-4px)}
+.testimonial-stars{color:#f5a623;font-size:18px;margin-bottom:12px}
+.testimonial-card blockquote{font-size:15px;color:#555;line-height:1.8;margin-bottom:20px;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{width:44px;height:44px;border-radius:50%;background:#e8ddd0;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff}
+.testimonial-name{font-weight:600;font-size:14px}
+.testimonial-meta{font-size:12px;color:#aaa}
+
+#contact{background:linear-gradient(135deg,#E8845C,#d4734d);color:#fff}
+#contact .section-label{color:rgba(255,255,255,.7)}
+#contact .section-title{color:#fff}
+#contact .section-desc{color:rgba(255,255,255,.8)}
+.contact-wrapper{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:start}
+.contact-info h3{font-size:20px;font-weight:700;margin-bottom:24px}
+.contact-info-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px}
+.contact-info-item .icon{width:40px;height:40px;background:rgba(255,255,255,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.contact-info-item p{font-size:14px;line-height:1.6;opacity:.9}
+.contact-info-item strong{display:block;font-size:15px;margin-bottom:2px}
+.contact-map{border-radius:16px;overflow:hidden;min-height:280px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15)}
+.contact-map iframe{width:100%;height:100%;min-height:280px;border:0;display:block}
+.contact-form{display:flex;flex-direction:column;gap:14px}
+.contact-form input,.contact-form textarea{padding:14px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.12);color:#fff;font-size:14px;font-family:inherit;outline:none;transition:all .3s}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,.5)}
+.contact-form input:focus,.contact-form textarea:focus{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5)}
+.contact-form textarea{min-height:120px;resize:vertical}
+.contact-form .btn{align-self:flex-start;background:#fff;color:#E8845C;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.contact-form .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+
+footer{background:#1a1a1a;color:rgba(255,255,255,.6);padding:40px 0;text-align:center;font-size:13px}
+footer a{color:rgba(255,255,255,.7)}
+footer a:hover{color:#E8845C}
+
+@media(max-width:992px){
+.hero .container{grid-template-columns:1fr;text-align:center}
+.hero-content h1{font-size:36px}
+.hero-content p{margin:0 auto 32px}
+.hero-btns,.hero-stats{justify-content:center}
+.hero-img-placeholder{max-width:360px}
+.services-grid{grid-template-columns:repeat(2,1fr)}
+.about-wrapper{grid-template-columns:1fr}
+.contact-wrapper{grid-template-columns:1fr 1fr}
+.testimonials-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:repeat(2,1fr)}
+.gallery-item.tall{grid-row:span 1;aspect-ratio:1}
+}
+@media(max-width:640px){
+.nav-links{display:none;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(250,248,246,.98);padding:16px 24px;gap:16px;border-bottom:1px solid rgba(0,0,0,.05)}
+.nav-links.open{display:flex}
+.nav-toggle{display:block}
+.hero{padding:120px 0 60px}
+.hero-content h1{font-size:30px}
+.hero-stats{gap:20px}
+.hero-stat span{font-size:22px}
+.section{padding:60px 0}
+.section-title{font-size:28px}
+.services-grid,.contact-wrapper{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:1fr 1fr}
+.about-features{grid-template-columns:1fr}
+}
+
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<a href="#" class="logo"><span class="logo-icon">🐾</span>汪小窝</a>
+<nav>
+<button class="nav-toggle" aria-label="菜单">☰</button>
+<ul class="nav-links">
+<li><a href="#services">服务项目</a></li>
+<li><a href="#about">关于我们</a></li>
+<li><a href="#gallery">作品展示</a></li>
+<li><a href="#testimonials">顾客评价</a></li>
+<li><a href="#contact">联系我们</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<section class="hero" id="home">
+<div class="container">
+<div class="hero-content">
+<h1>给毛孩子<br><span>最温柔的宠爱</span></h1>
+<p>专业宠物洗护 · 美容造型 · 健康护理一站式服务。我们用爱心和专业，让每一只宠物都焕然一新、身心愉悦。</p>
+<div class="hero-btns">
+<a href="#contact" class="btn btn-primary">立即预约 →</a>
+<a href="#services" class="btn btn-outline">查看服务</a>
+</div>
+<div class="hero-stats">
+<div class="hero-stat"><span>3000+</span><p>服务宠物</p></div>
+<div class="hero-stat"><span>98%</span><p>好评率</p></div>
+<div class="hero-stat"><span>6年</span><p>专业经验</p></div>
+</div>
+</div>
+<div class="hero-image">
+<div class="hero-img-placeholder">🐕<div class="sub">洗白白 · 变漂亮</div></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="services">
+<div class="container">
+<div class="section-header fade-in">
+<p class="section-label">Our Services</p>
+<h2 class="section-title">专业洗护服务</h2>
+<p class="section-desc">从基础清洁到高端SPA护理，为不同品种、不同需求的宠物提供量身定制的服务方案</p>
+</div>
+<div class="services-grid">
+<div class="service-card fade-in"><div class="service-icon">🛁</div><h3>基础洗护</h3><p>含深层清洁、护毛素护理、吹干梳毛、耳部清洁、指甲修剪，适合日常保养</p><div class="service-price">¥88 <small>起</small></div></div>
+<div class="service-card fade-in"><div class="service-icon">✂️</div><h3>美容造型</h3><p>专业宠物美容师量身设计造型，包含精修毛发、时尚造型、胡须修剪等</p><div class="service-price">¥188 <small>起</small></div></div>
+<div class="service-card fade-in"><div class="service-icon">💆</div><h3>SPA 水疗</h3><p>精油SPA、草本浴、深海泥护理，深层滋养皮肤毛发，舒缓宠物情绪</p><div class="service-price">¥288 <small>起</small></div></div>
+<div class="service-card fade-in"><div class="service-icon">🦷</div><h3>口腔护理</h3><p>专业宠物洁牙、口腔检查、牙结石清除，预防口腔疾病，清新口气</p><div class="service-price">¥128 <small>起</small></div></div>
+<div class="service-card fade-in"><div class="service-icon">💈</div><h3>局部修剪</h3><p>脚底毛、腹底毛、眼周毛修剪，肛门腺清理，夏日剃毛等单项服务</p><div class="service-price">¥48 <small>起</small></div></div>
+<div class="service-card fade-in"><div class="service-icon">🏠</div><h3>上门服务</h3><p>为不便出门的毛孩子提供上门洗护服务，专业设备、同样品质</p><div class="service-price">¥168 <small>起</small></div></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="about">
+<div class="container">
+<div class="about-wrapper">
+<div class="about-image fade-in">🐩</div>
+<div class="about-text fade-in">
+<p class="section-label">About Us</p>
+<h2>关于汪小窝</h2>
+<p>汪小窝宠物洗护成立于2019年，是一家专注于宠物洗护美容的专业服务机构。我们深知每一只毛孩子都是家庭的重要成员，因此始终坚持用最温柔的方式、最专业的产品来呵护它们。</p>
+<p>我们使用的洗护产品均选自天然低敏配方，严格把控每一个服务环节的卫生与安全。每一位美容师都经过严格培训考核，持证上岗。</p>
+<div class="about-features">
+<div class="about-feature"><span class="check">✓</span> 天然低敏洗护产品</div>
+<div class="about-feature"><span class="check">✓</span> 持证专业美容团队</div>
+<div class="about-feature"><span class="check">✓</span> 一客一消毒安心保障</div>
+<div class="about-feature"><span class="check">✓</span> 舒适安静护理环境</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="gallery">
+<div class="container">
+<div class="section-header fade-in">
+<p class="section-label">Gallery</p>
+<h2 class="section-title">萌宠作品展示</h2>
+<p class="section-desc">每一只毛孩子在我们这里都能焕然一新，看看它们洗护后的可爱瞬间</p>
+</div>
+<div class="gallery-grid">
+<div class="gallery-item fade-in" style="background:linear-gradient(145deg,#f0d5c4,#e0bba0)">🐕‍🦺<div class="label">贵宾造型</div></div>
+<div class="gallery-item fade-in" style="background:linear-gradient(145deg,#f0e0c8,#dcc8a8)">🐈<div class="label">猫咪SPA</div></div>
+<div class="gallery-item tall fade-in" style="background:linear-gradient(145deg,#e0d0c0,#c8b0a0)">🐕<div class="label">大型犬洗护</div></div>
+<div class="gallery-item fade-in" style="background:linear-gradient(145deg,#f0dbc8,#e0c0a0)">🐩<div class="label">创意染色</div></div>
+<div class="gallery-item fade-in" style="background:linear-gradient(145deg,#dce8d0,#c0d0a8)">🐶<div class="label">萌宠证件照</div></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="testimonials">
+<div class="container">
+<div class="section-header fade-in">
+<p class="section-label">Testimonials</p>
+<h2 class="section-title">顾客的真实评价</h2>
+<p class="section-desc">来看看毛孩子家长们怎么说</p>
+</div>
+<div class="testimonials-grid">
+<div class="testimonial-card fade-in">
+<div class="testimonial-stars">★★★★★</div>
+<blockquote>"我家豆豆第一次洗澡不害怕！美容师小姐姐特别温柔，全程都在安抚它。洗完之后毛发超级蓬松顺滑，回家一直香香的。"</blockquote>
+<div class="testimonial-author">
+<div class="testimonial-avatar" style="background:#e8a87c">🐱</div>
+<div><div class="testimonial-name">李女士</div><div class="testimonial-meta">金渐层 · 豆豆</div></div>
+</div>
+</div>
+<div class="testimonial-card fade-in">
+<div class="testimonial-stars">★★★★★</div>
+<blockquote>"从开业就在这家洗，六年了一直很稳定。价格透明从不乱加价，服务也一直很用心。强烈推荐给各位铲屎官！"</blockquote>
+<div class="testimonial-author">
+<div class="testimonial-avatar" style="background:#7cb8e8">🐶</div>
+<div><div class="testimonial-name">张先生</div><div class="testimonial-meta">金毛 · 旺财</div></div>
+</div>
+</div>
+<div class="testimonial-card fade-in">
+<div class="testimonial-stars">★★★★★</div>
+<blockquote>"第一次尝试猫咪SPA，没想到效果这么好！我家布偶的毛变得又顺又亮，皮肤也不干燥了。环境非常安静舒适，猫咪没有应激反应。"</blockquote>
+<div class="testimonial-author">
+<div class="testimonial-avatar" style="background:#d4a8e8">🐰</div>
+<div><div class="testimonial-name">王小姐</div><div class="testimonial-meta">布偶猫 · 棉花糖</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="contact">
+<div class="container">
+<div class="section-header fade-in">
+<p class="section-label">Contact</p>
+<h2 class="section-title">联系我们</h2>
+<p class="section-desc">预约洗护或咨询相关问题，随时联系我们</p>
+</div>
+<div class="contact-wrapper">
+
+<div class="contact-info fade-in">
+<h3>门店信息</h3>
+<div class="contact-info-item"><div class="icon">📍</div><div><strong>门店地址</strong><p>上海市徐汇区宠物大道88号 汪小窝宠物洗护</p></div></div>
+<div class="contact-info-item"><div class="icon">📞</div><div><strong>联系电话</strong><p>021-8888-6666</p></div></div>
+<div class="contact-info-item"><div class="icon">🕐</div><div><strong>营业时间</strong><p>周一至周日 09:00 - 20:00</p></div></div>
+<div class="contact-info-item"><div class="icon">💬</div><div><strong>微信客服</strong><p>wangxiaowo_pet（预约请提前一天）</p></div></div>
+</div>
+
+<div class="contact-map fade-in">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3411.5!2d121.44!3d31.19!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDExJzI0LjAiTiAxMjHCsDI2JzI0LjAiRQ!5e0!3m2!1szh-CN!2scn!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="门店地图"></iframe>
+</div>
+
+<form class="contact-form fade-in" onsubmit="event.preventDefault();alert('感谢您的预约，我们会尽快联系您！');">
+<input type="text" placeholder="您的姓名" required>
+<input type="tel" placeholder="联系电话" required>
+<input type="text" placeholder="宠物品种">
+<input type="date" placeholder="预约日期">
+<textarea placeholder="备注信息（如：需要剪毛、胆小怕水等）"></textarea>
+<button type="submit" class="btn">提交预约 →</button>
+</form>
+
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<div class="logo" style="justify-content:center;margin-bottom:12px;"><span class="logo-icon">🐾</span>汪小窝</div>
+<p>&copy; 2026 汪小窝宠物洗护 · 用心呵护每一只毛孩子</p>
+</div>
+</footer>
+
+<script>
+document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelector(".nav-links").classList.toggle("open")});
+document.querySelectorAll(".nav-links a").forEach(function(l){l.addEventListener("click",function(){document.querySelector(".nav-links").classList.remove("open")})});
+var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible")})},{threshold:0.15});
+document.querySelectorAll(".fade-in").forEach(function(el){obs.observe(el)});
+var hdr=document.querySelector("header");
+window.addEventListener("scroll",function(){hdr.style.boxShadow=window.scrollY>40?"0 2px 20px rgba(0,0,0,0.06)":"none"});
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){var t=document.querySelector(this.getAttribute("href"));if(t){e.preventDefault();var o=80;window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-o,behavior:"smooth"})}})});
+</script>
+</body>
+</html>
