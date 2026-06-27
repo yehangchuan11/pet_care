@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -101,9 +101,9 @@ header .container{display:flex;align-items:center;justify-content:space-between;
 .contact-map{border-radius:16px;overflow:hidden;min-height:280px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15)}
 .contact-map iframe{width:100%;height:100%;min-height:280px;border:0;display:block}
 .contact-form{display:flex;flex-direction:column;gap:14px}
-.contact-form input,.contact-form textarea{padding:14px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.12);color:#fff;font-size:14px;font-family:inherit;outline:none;transition:all .3s}
+.contact-form input,.contact-form textarea,.contact-form select{padding:14px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.12);color:#fff;font-size:14px;font-family:inherit;outline:none;transition:all .3s}
 .contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,.5)}
-.contact-form input:focus,.contact-form textarea:focus{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5)}
+.contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.5)}.contact-form select{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='rgba(255,255,255,.7)' d='M1.41.59L6 5.17 10.59.59 12 2l-6 6-6-6z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center;padding-right:44px}.contact-form select option{background:#d4734d;color:#fff}
 .contact-form textarea{min-height:120px;resize:vertical}
 .contact-form .btn{align-self:flex-start;background:#fff;color:#E8845C;box-shadow:0 4px 16px rgba(0,0,0,.12)}
 .contact-form .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
@@ -298,6 +298,12 @@ footer a:hover{color:#E8845C}
 <input type="text" placeholder="您的姓名" required>
 <input type="tel" placeholder="联系电话" required>
 <input type="text" placeholder="宠物品种">
+      <select>
+        <option value="" disabled selected>请选择服务项目</option>
+        <option value="basic">基础洗护 (&yen;88起)</option>
+        <option value="beauty">美容造型 (&yen;188起)</option>
+        <option value="spa">SPA水疗 (&yen;288起)</option>
+      </select>
 <input type="date" placeholder="预约日期">
 <textarea placeholder="备注信息（如：需要剪毛、胆小怕水等）"></textarea>
 <button type="submit" class="btn">提交预约 →</button>
